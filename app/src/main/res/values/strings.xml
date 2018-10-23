@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MobileDevelopmentProject</string>
+    <string name="logo_text">What\'s Cookin\'?</string>
+    <string name="start_cooking">Start Cooking</string>
+    <string name="find_supermarket">Find Supermarket</string>
 </resources>

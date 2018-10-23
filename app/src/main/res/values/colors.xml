@@ -4,4 +4,7 @@
     <color name="mainBackgroundColor">#9C0000</color>
     <color name="ingredientListBackgroundColor">#630F0F</color>
     <color name="textColor">#FFF</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
 </resources>
