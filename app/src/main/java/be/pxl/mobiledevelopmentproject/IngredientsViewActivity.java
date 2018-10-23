@@ -6,17 +6,17 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-public class SuperMarketActivity extends AppCompatActivity implements IActionBar {
+public class IngredientsViewActivity extends AppCompatActivity implements IActionBar {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.supermarket_search_view);
+        setContentView(R.layout.ingredient_view);
 
 
         toolbar();
     }
-
 
     public void toolbar() {
         ActionBar actionBar = getSupportActionBar();
@@ -36,9 +36,4 @@ public class SuperMarketActivity extends AppCompatActivity implements IActionBar
         return super.onOptionsItemSelected(item);
     }
 
-
 }
-
-
-
-
