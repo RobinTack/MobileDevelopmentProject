@@ -1,10 +1,13 @@
 package be.pxl.mobiledevelopmentproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class IngredientsViewActivity extends AppCompatActivity implements IActionBar {
 
@@ -16,6 +19,9 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
 
 
         toolbar();
+
+
+
     }
 
     public void toolbar() {
