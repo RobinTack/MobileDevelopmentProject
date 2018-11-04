@@ -7,4 +7,7 @@
     <string name="ingredients_title">Ingredients</string>
     <string name="add_ingredient_button_text">Add Ingredient</string>
     <string name="find_recipes_button_text">Find Recipes</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

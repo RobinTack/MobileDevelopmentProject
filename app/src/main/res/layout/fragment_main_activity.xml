@@ -5,10 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainBackgroundColor"
-    android:id="@+id/constraintLayout"
-    tools:context=".MainActivity">
+    android:gravity="bottom|fill"
+    android:orientation="horizontal"
+    tools:context=".MainActivityFragment">
 
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="67dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:contentDescription="@string/content_description_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoTextView"
+        app:srcCompat="@drawable/mockuppot" />
 
     <TextView
         android:id="@+id/logoTextView"
@@ -19,32 +33,17 @@
         android:textSize="40sp"
         app:fontFamily="@font/scriptbl"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.149" />
-
-    <Button
-        android:id="@+id/startCookingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
-        android:background="@drawable/my_button_bg"
-        android:padding="8dp"
-        android:text="@string/start_cooking"
-        android:textAllCaps="false"
-        android:textColor="@color/textColor"
-        android:textSize="25sp"
-        app:fontFamily="@font/scriptbl"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoTextView" />
+        app:layout_constraintVertical_bias="0.019" />
 
     <Button
         android:id="@+id/findSupermarketButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/my_button_bg"
         android:padding="8dp"
         android:text="@string/find_supermarket"
@@ -56,20 +55,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startCookingButton" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:contentDescription="@string/content_description_logo"
+    <Button
+        android:id="@+id/startCookingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:background="@drawable/my_button_bg"
+        android:padding="8dp"
+        android:text="@string/start_cooking"
+        android:textAllCaps="false"
+        android:textColor="@color/textColor"
+        android:textSize="25sp"
+        app:fontFamily="@font/scriptbl"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoTextView"
-        app:srcCompat="@drawable/mockuppot" />
-
+        app:layout_constraintTop_toBottomOf="@+id/logoTextView" />
 
 </android.support.constraint.ConstraintLayout>
