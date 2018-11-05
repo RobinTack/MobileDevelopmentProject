@@ -55,7 +55,6 @@ public class MainActivityFragment extends android.app.Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), IngredientsViewActivity.class);
-                //intent.putExtra("some","some date");
                 startActivity(intent);
             }
         });
@@ -63,8 +62,7 @@ public class MainActivityFragment extends android.app.Fragment {
         findSupermarketButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), IngredientsViewActivity.class);
-                //intent.putExtra("some","some date");
+                Intent intent = new Intent(getActivity(), SuperMarketActivity.class);
                 startActivity(intent);
             }
         });
