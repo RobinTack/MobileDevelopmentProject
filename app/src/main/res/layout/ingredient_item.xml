@@ -11,14 +11,13 @@
         android:id="@+id/textView_name_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Empty item"
+        android:text=""
         app:fontFamily="@font/scriptbl"
         android:textSize="30sp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="8dp"
+        android:paddingLeft="8dp"
         android:textColor="@android:color/white"
         android:background="@drawable/my_button_bg"
-
-
         />
 
 </LinearLayout>

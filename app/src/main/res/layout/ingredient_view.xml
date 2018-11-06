@@ -35,6 +35,12 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:hint="@string/ingredient_hint"
+        android:textColor="@color/textColor"
+        android:textColorHighlight="@color/textColor"
+        android:inputType="text"
+        android:textCursorDrawable="@color/textColor"
+        app:backgroundTint="@color/textColor"
         app:layout_constraintBottom_toTopOf="@+id/button_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
