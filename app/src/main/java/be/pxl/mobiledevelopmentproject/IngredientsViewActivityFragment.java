@@ -19,7 +19,7 @@ public class IngredientsViewActivityFragment extends android.app.Fragment {
     private Button button_add;
     private Button findRecipeButton;
 
-
+/*
     public IngredientsViewActivityFragment() {
         // Required empty public constructor
     }
@@ -83,7 +83,7 @@ public class IngredientsViewActivityFragment extends android.app.Fragment {
      * This is called when the user rotates the device
      * @param newConfig Configuration
      */
-
+/*
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         //Save text that the user has already typed
@@ -101,5 +101,6 @@ public class IngredientsViewActivityFragment extends android.app.Fragment {
         //Call the default method to cover our bases
         super.onConfigurationChanged(newConfig);
     }
+    */
 }
 

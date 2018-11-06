@@ -28,13 +28,13 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
     private EditText mEditTextName;
 
 
-
+/*
     /**
      * Clear any existing layout, add the current fragment
      * to the back stack, and load the new fragment
      * @param fragment fragment to load
      */
-
+/*
     public void loadFragment(Fragment fragment){
         //Clear any existing layout
         constraintLayoutIng.removeAllViews();
@@ -47,7 +47,7 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
                 .commit();
 
     }
-
+*/
     @Override
     public void onBackPressed() {
         //clear any existing layouts before popping the stack
@@ -114,7 +114,7 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
     }
 
     private void addItem(){
-
+/*
         if (mEditTextName.getText().toString().trim().length() == 0){
             return;
         }
@@ -126,6 +126,11 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
         mDatabase.insert(IngredientContract.IngredientEntry.TABLE_NAME, null, cv);
 
         mEditTextName.getText().clear();
+        */
+        String name = mEditTextName.getText().toString();
+        databaseHelper.insertDataInIngredients(name);
+        mEditTextName.getText().clear();
+
     }
 
     public void toolbar() {

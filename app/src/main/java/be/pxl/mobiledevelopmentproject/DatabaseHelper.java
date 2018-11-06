@@ -8,13 +8,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import be.pxl.mobiledevelopmentproject.IngredientContract.*;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static final String databaseName = "whatscookin.db";
+    public static final String DATABASE_NAME = "whatscookin.db";
     public static final String tableName = "ingredients";
-    public static final int version = 1;
+    public static final int DATABASE_VERSION = 1;
     private SQLiteDatabase mDb;
 
     public DatabaseHelper(Context context) {
-        super(context, databaseName, null, version);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -22,6 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         final String SQL_CREATE_INGREDIENTLIST_TABLE ="CREATE TABLE " +
                 IngredientEntry.TABLE_NAME + " (" +
                 IngredientEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                IngredientEntry.COLUMN_NAME + " TEXT NOT NULL, " +
                 IngredientEntry.COLUMN_TIMESTAMP + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
                 ");";
         //db.execSQL("CREATE TABLE "+tableName+ " (Id Integer PRIMARY KEY AUTOINCREMENT, INGREDIENTTEXT TEXT)");
@@ -39,7 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean insertDataInIngredients(String ingredient){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("INGREDIENTTEXT", ingredient);
+        contentValues.put("name", ingredient);
         long result = database.insert(tableName,null,contentValues);
         if (result==-1){
             return false;
