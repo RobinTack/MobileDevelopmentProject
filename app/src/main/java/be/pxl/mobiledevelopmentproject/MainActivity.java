@@ -69,11 +69,11 @@ public class MainActivity extends AppCompatActivity implements IActionBar {
 
         helper = new DatabaseHelper(this);
         this.mDb = helper.getWritableDatabase();
-        boolean insert = helper.insertDataInIngredients("Tomato");
+       /* boolean insert = helper.insertDataInIngredients("Tomato");
         if (insert==true){
             Toast.makeText(getApplicationContext(), "Successfully inserted", Toast.LENGTH_SHORT).show();
         }
-
+*/
         //attach the layout to a handle
         constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
 

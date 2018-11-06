@@ -1,8 +1,6 @@
 package be.pxl.mobiledevelopmentproject;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,18 +9,16 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.List;
-
-import be.pxl.mobiledevelopmentproject.data.Ingredient;
-
 public class IngredientsViewActivity extends AppCompatActivity implements IActionBar {
     private SQLiteDatabase mDatabase;
+    private IngredientAdapter mAdapter;
     private ConstraintLayout constraintLayoutIng;
     private DatabaseHelper databaseHelper;
     private EditText mEditTextName;
@@ -80,6 +76,10 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
         databaseHelper = new DatabaseHelper(this);
         mDatabase = databaseHelper.getWritableDatabase();
 
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new IngredientAdapter(this, getAllItems());
+        recyclerView.setAdapter(mAdapter);
 
         //attach the layout to a handle
         constraintLayoutIng = (ConstraintLayout) findViewById(R.id.constraintLayoutIng);
@@ -114,21 +114,10 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
     }
 
     private void addItem(){
-/*
-        if (mEditTextName.getText().toString().trim().length() == 0){
-            return;
-        }
 
-        String name = mEditTextName.getText().toString();
-        ContentValues cv = new ContentValues();
-        cv.put(IngredientContract.IngredientEntry.COLUMN_NAME, name);
-
-        mDatabase.insert(IngredientContract.IngredientEntry.TABLE_NAME, null, cv);
-
-        mEditTextName.getText().clear();
-        */
         String name = mEditTextName.getText().toString();
         databaseHelper.insertDataInIngredients(name);
+        mAdapter.swapCursor(getAllItems());
         mEditTextName.getText().clear();
 
     }
@@ -149,6 +138,18 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private Cursor getAllItems(){
+        return mDatabase.query(
+                IngredientContract.IngredientEntry.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                IngredientContract.IngredientEntry.COLUMN_TIMESTAMP + " DESC"
+                );
     }
 
 }

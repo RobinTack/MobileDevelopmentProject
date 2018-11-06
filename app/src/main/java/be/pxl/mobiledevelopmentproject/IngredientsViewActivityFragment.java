@@ -2,7 +2,9 @@ package be.pxl.mobiledevelopmentproject;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +16,20 @@ import android.widget.TextView;
 public class IngredientsViewActivityFragment extends android.app.Fragment {
     private ViewGroup container;
     private LayoutInflater inflater;
-    private EditText editText;
     private TextView textView;
     private Button button_add;
     private Button findRecipeButton;
+    private SQLiteDatabase mDatabase;
+    private ConstraintLayout constraintLayoutIng;
+    private DatabaseHelper databaseHelper;
+    private EditText mEditTextName;
 
-/*
+
     public IngredientsViewActivityFragment() {
         // Required empty public constructor
     }
 
-
+/*
     public View initializeUserInterface(){
         View view;
 
@@ -43,26 +48,10 @@ public class IngredientsViewActivityFragment extends android.app.Fragment {
         else{ // orientation == orientation == Configuration.ORIENTATION_LANDSCAPE
             view = inflater.inflate(R.layout.fragment_ingredients_view_activity, container, false);
         }
-
         //instantiate widgets from the layout
         button_add = view.findViewById(R.id.button_add);
         findRecipeButton = view.findViewById(R.id.findRecipeButton);
 
-        button_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), IngredientsViewActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        findRecipeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), RecipesActivity.class);
-                startActivity(intent);
-            }
-        });
 
         return view;
     }
@@ -75,6 +64,8 @@ public class IngredientsViewActivityFragment extends android.app.Fragment {
         this.inflater = inflater;
 
         //Display desired layout and return the view
+
+
         return initializeUserInterface();
 
     }
@@ -86,14 +77,10 @@ public class IngredientsViewActivityFragment extends android.app.Fragment {
 /*
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-        //Save text that the user has already typed
-        //String preserveThisText = editText.getText().toString();
 
         //Create the new Layout
         View view = initializeUserInterface();
 
-        //Display the text the user has already typed
-        //editText.setText(preserveThisText);
 
         //Display the new layout on the screen
         container.addView(view);
@@ -101,6 +88,46 @@ public class IngredientsViewActivityFragment extends android.app.Fragment {
         //Call the default method to cover our bases
         super.onConfigurationChanged(newConfig);
     }
-    */
+
+
+    private void onActivityCreated(){
+        button_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                mEditTextName = v.findViewById(R.id.edittext_name);
+                String name = mEditTextName.getText().toString();
+
+                databaseHelper.insertDataInIngredients(name);
+
+                mEditTextName.getText().clear();
+
+                /*
+                Intent intent = new Intent(getActivity(), IngredientsViewActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        findRecipeButton.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), RecipesActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void addItem(){
+
+        String name = mEditTextName.getText().toString();
+        String neim =
+        databaseHelper.insertDataInIngredients(name);
+        mEditTextName.getText().clear();
+
+    }
+*/
 }
 
