@@ -60,7 +60,7 @@ public class MainActivityFragment extends android.app.Fragment {
         findSupermarketButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), SuperMarketActivity.class);
+                Intent intent = new Intent(getActivity(), GoogleSuperMarketActivity.class);
                 startActivity(intent);
             }
         });
