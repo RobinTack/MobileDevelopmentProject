@@ -1,6 +1,7 @@
 package be.pxl.mobiledevelopmentproject;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -11,11 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements IActionBar {
 
     private ConstraintLayout constraintLayout;
+    DatabaseHelper helper;
+    private SQLiteDatabase mDb;
 
 
     /**
@@ -63,6 +66,13 @@ public class MainActivity extends AppCompatActivity implements IActionBar {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_view);
+
+        helper = new DatabaseHelper(this);
+        this.mDb = helper.getWritableDatabase();
+        boolean insert = helper.insertDataInIngredients("Tomato");
+        if (insert==true){
+            Toast.makeText(getApplicationContext(), "Successfully inserted", Toast.LENGTH_SHORT).show();
+        }
 
         //attach the layout to a handle
         constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
