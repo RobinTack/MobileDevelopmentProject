@@ -48,8 +48,11 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
             return;
         }
         String name = mCursor.getString(mCursor.getColumnIndex(IngredientContract.IngredientEntry.COLUMN_NAME));
+        long id = mCursor.getLong(mCursor.getColumnIndex(IngredientContract.IngredientEntry._ID));
+
 
         holder.nameText.setText(name);
+        holder.itemView.setTag(id);
     }
 
     @Override
