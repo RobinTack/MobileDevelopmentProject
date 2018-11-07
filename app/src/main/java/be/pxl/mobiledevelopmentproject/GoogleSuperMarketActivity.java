@@ -6,23 +6,12 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.places.Places;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -39,6 +28,9 @@ public class GoogleSuperMarketActivity extends FragmentActivity implements OnMap
 
     private GoogleMap mMap;
     private LocationManager locationManager;
+    private double latitudeSupermarket, longitudeSupermarket;
+    private int ProximityRadius = 10000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +91,10 @@ public class GoogleSuperMarketActivity extends FragmentActivity implements OnMap
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, new android.location.LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
+
+                    latitudeSupermarket = location.getLatitude();
+                    longitudeSupermarket = location.getLongitude();
+
                     double longitude = location.getLongitude();
                     double latitude = location.getLatitude();
                     LatLng latLng = new LatLng(latitude,longitude);
@@ -131,6 +127,34 @@ public class GoogleSuperMarketActivity extends FragmentActivity implements OnMap
             });
         }
 
+        String supermarket = "supermarket";
+        Object transferData[] = new Object[2];
+        GetNearbyPlaces getNearbyPlaces = new GetNearbyPlaces();
+        String url = getUrl(latitudeSupermarket, longitudeSupermarket, supermarket);
+        transferData[0]=mMap;
+        transferData[1]=url;
+
+        getNearbyPlaces.execute(transferData);
+        Toast.makeText(this, "Searching for Nearby Supermarkets...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Showing for Nearby Supermarkets...", Toast.LENGTH_SHORT).show();
+
+        mMap.clear();
+
+    }
+
+
+    private String getUrl(double latitudeSupermarket, double longitudeSupermarket, String nearbyPlace){
+        StringBuilder googleURL = new StringBuilder("https://maps.googleapis.com/maps/api/place/textsearch/json?");
+        googleURL.append("location" + latitudeSupermarket + "," + longitudeSupermarket);
+        googleURL.append("&radius=" + ProximityRadius);
+        googleURL.append("&type=" + nearbyPlace);
+        googleURL.append("&sensor=true");
+        googleURL.append("&key=" + "AIzaSyByznC3TBMoVALjm28ex0E11tpJbPtEfus");
+
+
+        Log.d("GoogleMapsActivity", "url = " + googleURL.toString());
+
+        return googleURL.toString();
     }
 
     /**
