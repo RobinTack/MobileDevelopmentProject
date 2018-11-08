@@ -114,7 +114,7 @@ public class IngredientsViewActivityFragment extends android.app.Fragment {
             //@Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), RecipesActivity.class);
+                Intent intent = new Intent(getActivity());
                 startActivity(intent);
             }
         });
