@@ -109,8 +109,8 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
 
         mEditTextName = findViewById(R.id.edittext_name);
 
-        Button findRecipeButton = (Button)findViewById(R.id.findRecipeButton);
         Button buttonAdd = findViewById(R.id.button_add);
+        Button findRecipeButton = findViewById(R.id.findRecipeButton);
 
 
         buttonAdd.setOnClickListener(new View.OnClickListener(){
@@ -123,7 +123,7 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
 
         findRecipeButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                startActivity(new Intent(IngredientsViewActivity.this, RecipesActivity.class));
+                startActivity(new Intent(IngredientsViewActivity.this, RecipeListActivity.class));
             }
         });
 
