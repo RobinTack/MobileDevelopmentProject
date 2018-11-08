@@ -36,9 +36,11 @@ public class GetNearbyPlaces extends AsyncTask<Object, String, String> {
     @Override
     protected void onPostExecute(String s)
     {
+        System.out.println("----------ON POST EXECUTE" + s +"---------------");
         List<HashMap<String,String>> nearbyPlacesList = null;
         DataParser dataParser = new DataParser();
         nearbyPlacesList = dataParser.parse(s);
+
 
         DisplayNearbyPlaces(nearbyPlacesList);
     }
@@ -54,13 +56,13 @@ public class GetNearbyPlaces extends AsyncTask<Object, String, String> {
             double lat = Double.parseDouble(googleNearbyPlace.get("lat"));
             double lng = Double.parseDouble(googleNearbyPlace.get("lng"));
 
+
+
             LatLng latLng = new LatLng(lat, lng);
             markerOptions.position(latLng);
             markerOptions.title(nameOfPlace + " : " + vicinity);
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
             mMap.addMarker(markerOptions);
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
 
         }
     }

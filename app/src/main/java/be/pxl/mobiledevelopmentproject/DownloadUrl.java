@@ -21,21 +21,23 @@ public class DownloadUrl
 
             inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuffer stringBuffer = new StringBuffer();
+            StringBuilder stringBuilder = new StringBuilder();
 
             String line = "";
 
             while( (line = bufferedReader.readLine()) != null ){
-                stringBuffer.append(line);
+                stringBuilder.append(line);
             }
 
-            Data = stringBuffer.toString();
+            Data = stringBuilder.toString();
             bufferedReader.close();
 
 
         } catch (MalformedURLException e) {
+            System.out.println("----------------------------------------------MALFORMED URL EXECPTION-------------------------------------------------");
             e.printStackTrace();
         } catch (IOException e) {
+            System.out.println("----------------------------------------------IO EXECPTION-------------------------------------------------");
             e.printStackTrace();
         }
         finally {
