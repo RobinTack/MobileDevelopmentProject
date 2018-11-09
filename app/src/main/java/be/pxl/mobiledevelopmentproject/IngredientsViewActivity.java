@@ -2,7 +2,6 @@ package be.pxl.mobiledevelopmentproject;
 
 import android.app.FragmentManager;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,13 +17,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import be.pxl.mobiledevelopmentproject.datalayer.DatabaseController;
+import be.pxl.mobiledevelopmentproject.datalayer.DatabaseHelper;
+import be.pxl.mobiledevelopmentproject.datalayer.IngredientAdapter;
+
 public class IngredientsViewActivity extends AppCompatActivity implements IActionBar {
     private SQLiteDatabase mDatabase;
     private IngredientAdapter mAdapter;
     private ConstraintLayout constraintLayoutIng;
     private DatabaseHelper databaseHelper;
-    private EditText mEditTextName;
-
+    public  EditText mEditTextName;
+    private DatabaseController databaseController;
 
 /*
     /**
@@ -75,13 +78,13 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ingredient_view);
 
-        databaseHelper = new DatabaseHelper(this);
-        mDatabase = databaseHelper.getWritableDatabase();
-
+        //databaseHelper = new DatabaseHelper(this);
+        //mDatabase = databaseHelper.getWritableDatabase();
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new IngredientAdapter(this, getAllItems());
-        recyclerView.setAdapter(mAdapter);
+        databaseController = new DatabaseController(this);
+        //mAdapter = new IngredientAdapter(this, getAllItems());
+        recyclerView.setAdapter(databaseController.getmAdapter());
 
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -92,7 +95,7 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-                removeItem((long) viewHolder.itemView.getTag());
+               databaseController.removeItem((long) viewHolder.itemView.getTag());
             }
         }).attachToRecyclerView(recyclerView);
 
@@ -116,7 +119,9 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
         buttonAdd.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                addItem();
+                String ingredient = mEditTextName.getText().toString();
+                databaseController.addItem(ingredient);
+                mEditTextName.getText().clear();
             }
         });
 
@@ -127,22 +132,6 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
             }
         });
 
-    }
-
-    private void addItem(){
-
-        String name = mEditTextName.getText().toString();
-        databaseHelper.insertDataInIngredients(name);
-        mAdapter.swapCursor(getAllItems());
-        mEditTextName.getText().clear();
-
-    }
-
-    private void removeItem(long id){
-        mDatabase.delete(IngredientContract.IngredientEntry.TABLE_NAME,
-                IngredientContract.IngredientEntry._ID + "=" + id,
-                null);
-        mAdapter.swapCursor(getAllItems());
     }
 
     public void toolbar() {
@@ -163,6 +152,10 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
         return super.onOptionsItemSelected(item);
     }
 
+
+
+
+    /*
     private Cursor getAllItems(){
         return mDatabase.query(
                 IngredientContract.IngredientEntry.TABLE_NAME,
@@ -174,5 +167,5 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
                 IngredientContract.IngredientEntry.COLUMN_TIMESTAMP + " DESC"
                 );
     }
-
+*/
 }

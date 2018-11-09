@@ -1,4 +1,4 @@
-package be.pxl.mobiledevelopmentproject;
+package be.pxl.mobiledevelopmentproject.datalayer;
 
 public class Ingredient {
     private long id;

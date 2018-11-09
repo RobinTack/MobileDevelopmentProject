@@ -2,9 +2,7 @@ package be.pxl.mobiledevelopmentproject;
 
 import android.os.AsyncTask;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -12,6 +10,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+
+import be.pxl.mobiledevelopmentproject.datalayer.DataParser;
 
 public class GetNearbyPlaces extends AsyncTask<Object, String, String> {
     private String googleplaceData, url;

@@ -1,4 +1,4 @@
-package be.pxl.mobiledevelopmentproject;
+package be.pxl.mobiledevelopmentproject.datalayer;
 
 import org.json.JSONArray;
 import org.json.JSONException;

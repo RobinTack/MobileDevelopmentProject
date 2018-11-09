@@ -1,4 +1,4 @@
-package be.pxl.mobiledevelopmentproject;
+package be.pxl.mobiledevelopmentproject.datalayer;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import be.pxl.mobiledevelopmentproject.IngredientContract;
+import be.pxl.mobiledevelopmentproject.R;
+
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.IngredientViewHolder> {
     private Context mContext;
     private Cursor mCursor;
-
 
 
     public IngredientAdapter(Context context, Cursor cursor){
