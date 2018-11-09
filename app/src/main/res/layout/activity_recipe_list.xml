@@ -24,6 +24,18 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             />
 
+        <Button
+            android:id="@+id/showRecipesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/show_recipes"
+            android:background="@drawable/my_button_bg"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/scriptbl"
+            android:textSize="25sp"
+            android:textAllCaps="false"
+            />
+
     </android.support.design.widget.AppBarLayout>
 
     <FrameLayout
@@ -33,8 +45,10 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:textColor="@color/textColor"
         >
-
-        <include layout="@layout/recipe_list" />
+        <include
+            layout="@layout/recipe_list"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"/>
     </FrameLayout>
 
 

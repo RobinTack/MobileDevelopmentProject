@@ -8,8 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 
-import be.pxl.mobiledevelopmentproject.IngredientContract;
-
 public class DatabaseController extends AppCompatActivity {
     private SQLiteDatabase mDatabase;
     private IngredientAdapter mAdapter;

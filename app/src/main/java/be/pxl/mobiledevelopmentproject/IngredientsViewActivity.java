@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.List;
+
 import be.pxl.mobiledevelopmentproject.datalayer.DatabaseController;
 import be.pxl.mobiledevelopmentproject.datalayer.DatabaseHelper;
 import be.pxl.mobiledevelopmentproject.datalayer.IngredientAdapter;
@@ -131,6 +133,7 @@ public class IngredientsViewActivity extends AppCompatActivity implements IActio
                 startActivity(new Intent(IngredientsViewActivity.this, RecipeListActivity.class));
             }
         });
+
 
     }
 

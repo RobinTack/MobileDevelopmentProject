@@ -5,13 +5,13 @@
     android:id="@+id/recipe_list"
     android:name="be.pxl.mobiledevelopmentproject.RecipeListFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
-    app:layoutManager="LinearLayoutManager"
-    tools:context=".RecipeListActivity"
-    tools:listitem="@layout/recipe_list_content"
     android:background="@color/mainBackgroundColor"
     android:textColor="@color/textColor"
+    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+    tools:context=".RecipeListActivity"
+    tools:listitem="@layout/recipe_list_content"
 
     />

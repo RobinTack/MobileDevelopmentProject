@@ -10,5 +10,4 @@
     tools:context=".RecipeDetailFragment"
     android:background="@color/mainBackgroundColor"
     android:textColor="@color/textColor"
-
     />

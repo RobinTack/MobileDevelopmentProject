@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import be.pxl.mobiledevelopmentproject.IngredientContract;
 import be.pxl.mobiledevelopmentproject.R;
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.IngredientViewHolder> {
