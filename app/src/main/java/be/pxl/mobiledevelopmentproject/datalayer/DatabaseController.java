@@ -1,14 +1,14 @@
-package be.pxl.mobiledevelopmentproject;
+package be.pxl.mobiledevelopmentproject.datalayer;
 
-import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.EditText;
+
+import be.pxl.mobiledevelopmentproject.IngredientContract;
 
 public class DatabaseController extends AppCompatActivity {
     private SQLiteDatabase mDatabase;

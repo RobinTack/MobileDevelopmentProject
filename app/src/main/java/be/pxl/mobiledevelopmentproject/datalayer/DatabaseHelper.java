@@ -1,4 +1,4 @@
-package be.pxl.mobiledevelopmentproject;
+package be.pxl.mobiledevelopmentproject.datalayer;
 
 import android.content.ContentValues;
 import android.content.Context;
